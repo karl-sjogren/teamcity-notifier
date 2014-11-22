@@ -1,0 +1,24 @@
+{
+  "name": "teamcity-notifier",
+  "version": "0.0.1",
+  "description": "Node-project that can fire events when a build fails or is fixed in Teamcity",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/karl-sjogren/teamcity-notifier.git"
+  },
+  "keywords": [
+    "node",
+    "nodejs",
+    "teamcity"
+  ],
+  "author": "Karl-Johan Sjögren",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/karl-sjogren/teamcity-notifier/issues"
+  },
+  "homepage": "https://github.com/karl-sjogren/teamcity-notifier"
+}
