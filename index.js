@@ -13,7 +13,7 @@ TeamCity.prototype.start = function() {
   that.interval = setInterval(function() {
     var req = http.request({
       host: that.config.host,
-      path: '/app/rest/builds?locator=running:any',
+      path: '/app/rest/builds?locator=running:any,canceled:any',
       port: that.config.port,
       method: 'GET',
       headers: {
@@ -54,7 +54,22 @@ TeamCity.prototype.start = function() {
             if(oldBuild.status !== build.status) {
               that.emit('status-changed', oldBuild, build);
             }              
+            
+            if(oldBuild.state !== build.state) {
+              that.emit('state-changed', oldBuild, build);
+            }
           }
+        });
+        
+        var finishedBuilds = that.runningBuilds.filter(function(runningBuild) {
+          return data.build.some(function(build) {
+            return build.id === runningBuild.id && build.state === 'finished';
+          });
+        });
+        
+        finishedBuilds.forEach(function(build) {
+          that.emit('finished-build', build);
+          that.runningBuilds.splice(that.runningBuilds.indexOf(build), 1);
         });
       });
     });
