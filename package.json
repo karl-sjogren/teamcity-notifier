@@ -1,6 +1,6 @@
 {
   "name": "teamcity-notifier",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Node-project that can fire events when a build fails or is fixed in Teamcity",
   "main": "index.js",
   "scripts": {

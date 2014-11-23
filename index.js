@@ -60,13 +60,12 @@ TeamCity.prototype.start = function() {
     });
     
     req.on('error', function(e) {
-      console.log('problem with request: ' + e.message);
+      that.emit('error', e);
     });
     
     req.end();
     
-    //that.emit('failed')
-  }, 1000);
+  }, this.config.interval || 1000);
 };
 
 TeamCity.prototype.stop = function() {
