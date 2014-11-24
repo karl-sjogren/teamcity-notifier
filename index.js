@@ -58,6 +58,9 @@ TeamCity.prototype.start = function() {
             if(oldBuild.state !== build.state) {
               that.emit('state-changed', oldBuild, build);
             }
+            
+            that.runningBuilds.splice(that.runningBuilds.indexOf(build), 1);
+            that.runningBuilds.push(build);
           }
         });
         
